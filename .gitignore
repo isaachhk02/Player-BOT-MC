@@ -1,0 +1,30 @@
+# Gradle
+.gradle/
+build/
+run/
+out/
+*.class
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.settings/
+.project
+.classpath
+.factorypath
+nbproject/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Loom
+.loom-cache/
+remappedSrc/
+
+# Logs
+*.log
+logs/

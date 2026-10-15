@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "org.isaachhk02.playerbot.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "ServerPlayerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

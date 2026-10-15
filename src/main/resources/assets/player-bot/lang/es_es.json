@@ -1,0 +1,22 @@
+{
+  "commands.bot.create.success": "Bot creado: %s",
+  "commands.bot.remove.success": "Bot eliminado: %s",
+  "commands.bot.list.header": "=== Bots Activos (%s) ===",
+  "commands.bot.help.header": "=== Comandos de Bots ===",
+  "bot.joined": "[BOT] %s se ha unido al juego!",
+  "bot.left": "[BOT] %s ha salido del juego!",
+  "bot.attacking": "¡Atacando a %s!",
+  "bot.defending": "¡Defendiéndome!",
+  "bot.fleeing": "¡Huyendo!",
+  "bot.following": "¡Siguiendo a %s!",
+  "bot.building": "¡Empezando a construir: %s!",
+  "bot.mining": "Minando...",
+  "bot.crafting": "¡Crafteado %s!",
+  "bot.gathering": "Recolectando recursos...",
+  "bot.exploring": "Explorando el área...",
+  "bot.eating": "Comiendo...",
+  "bot.help": "¡AYUDA! ¡Necesito asistencia!",
+  "bot.team": "¡Somos un equipo de %s!",
+  "bot.goodbye": "¡Adiós!",
+  "bot.welcome": "¡Hola! Soy %s, ¡listo para ayudar!"
+}

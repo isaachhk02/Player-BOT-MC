@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "player-bot",
+	"version": "${version}",
+	"name": "Player BOT",
+	"description": "Create AI-controlled player bots that can move, craft, build, fight, defend, cooperate and chat!",
+	"authors": [
+		"isaachhk02"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/isaachhk02/player-bot"
+	},
+	"license": "MIT",
+	"icon": "assets/player-bot/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"org.isaachhk02.playerbot.PlayerBOT"
+		],
+		"client": [
+			"org.isaachhk02.playerbot.client.PlayerBOTClient"
+		]
+	},
+	"mixins": [
+		"player-bot.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.0",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"fabric-api": "*"
+	}
+}
