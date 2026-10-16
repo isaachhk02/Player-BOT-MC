@@ -14,6 +14,302 @@ Un mod de Fabric para Minecraft 1.21.1 que permite crear jugadores controlados p
 - 🐄 **Caza** de animales (vacas, cerdos, ovejas, gallinas, conejos) cuando tiene hambre
 - 🎒 **Empiezan con inventario vacío**: talan madera, minan piedra, craftean herramientas y se equipan solos
 
+---
+
+<!-- ENGLISH SECTION -->
+
+## English
+
+Player BOT - AI Controlled Players for Minecraft
+
+A Fabric mod for Minecraft 1.21.1 that lets you create AI-controlled players with advanced capabilities:
+
+- 🚶 Intelligent movement with pathfinding
+- ⚔️ Combat against hostile mobs
+- 🛡️ Defense with shields and dodging
+- 🏗️ Building structures (houses, towers, bridges, etc.)
+- 🔨 Automatic crafting of tools and items
+- ⛏️ Mining and resource gathering
+- 💬 Chat with human players and other bots
+- 🤝 Cooperation between bots (groups, mutual assistance)
+- 👥 Player tracking
+- 🐄 Hunting animals (cows, pigs, sheep, chickens, rabbits) when hungry
+- 🎒 Start with empty inventory: they chop wood, mine stone, craft tools and equip themselves
+
+### Installation
+
+1. Download the `.jar` file from `build/libs/`
+2. Place it in your server or client `mods/` folder
+3. Make sure you have [Fabric Loader](https://fabricmc.net/) and [Fabric API](https://modrinth.com/mod/fabric-api) installed
+
+### Requirements
+
+- Minecraft 1.21.1
+- Fabric Loader >= 0.16.0
+- Fabric API (recommended)
+- Java 21+
+
+### Commands
+
+All commands require operator permissions (level 2+).
+
+Creating bots
+
+```bash
+# Create a bot near you
+/bot create <name>
+
+# Create a bot at a specific position
+/bot createat <name> <x> <y> <z>
+
+# Create a bot with a specific game mode
+/bot create <name> [survival|creative|adventure|spectator]
+/bot createat <name> <x> <y> <z> [survival|creative|adventure|spectator]
+```
+
+Managing bots
+
+```bash
+# List all active bots
+/bot list
+
+# Show stats for all bots
+/bot stats
+
+# Show stats for a specific bot
+/bot stats <name>
+
+# Remove a bot
+/bot remove <name>
+
+# Remove all bots
+/bot removeall
+```
+
+Controlling bots
+
+```bash
+# Make a bot speak
+/bot say <name> <message>
+
+# Make a bot follow a player
+/bot follow <name> <player>
+
+# Stop a bot
+/bot stop <name>
+
+# Stop all bots
+/bot stopall
+
+# Move a bot to a position
+/bot goto <name> <x> <y> <z>
+
+# Teleport a bot
+/bot tp <name> <x> <y> <z>
+
+# Make a bot come to you
+/bot come <name>
+```
+
+Combat and building
+
+```bash
+# Make a bot attack an entity
+/bot attack <name> <entity>
+
+# Make a bot build a structure
+/bot build <name> <type>
+```
+
+Available build types:
+- `shelter` - Basic 3x3 shelter
+- `tower` - Watch tower
+- `wall` - Wall
+- `house` - Simple 5x5 house
+- `bridge` - Bridge
+- `farm` - Basic farm
+
+Cooperation
+
+```bash
+# Create a group of allied bots
+/bot group <name1> <name2>
+```
+
+Area protection
+
+Bots respect protected areas and will **NEVER** destroy other players' builds:
+
+```bash
+# Protect an area (bots will not build or mine here)
+/bot protect <x1> <y1> <z1> <x2> <y2> <z2>
+
+# Remove protection from an area
+/bot unprotect <x1> <y1> <z1> <x2> <y2> <z2>
+
+# Check if a position is protected
+/bot check <x> <y> <z>
+```
+
+Combat modes
+
+Bots have 3 combat modes to control aggression:
+
+```bash
+# PASSIVE mode: never attacks, only flees when attacked
+/bot mode <name> passive
+
+# DEFENSIVE mode (default): only defends, doesn't initiate combat
+/bot mode <name> defensive
+
+# AGGRESSIVE mode: automatically attacks nearby monsters
+/bot mode <name> aggressive
+```
+
+Important safety rules:
+
+- ✅ Bots ONLY attack hostile monsters (zombies, skeletons, creepers, etc.)
+- ❌ Bots NEVER attack human players
+- ❌ Bots NEVER attack allied bots
+- 🛡️ Bots DO NOT destroy other players' builds
+- 🏠 Bots DO NOT mine in protected areas (spawn, near players, claims)
+- 🐄 Bots hunt farm animals ONLY when hungry (never for sport)
+- 📋 Bots respect property signs ("private", "house", "keep out", etc.)
+
+### AI Capabilities
+
+States, priorities and behavior are the same as described in the Spanish section below. They include states like IDLE, MOVING, GATHERING, MINING, CRAFTING, BUILDING, FIGHTING, DEFENDING, FLEEING, FOLLOWING, EXPLORING, HEALING, HUNTING and CHATTING.
+
+Task priorities example (higher value = higher priority):
+1. FLEEING (100)
+2. FIGHTING/DEFENDING (90)
+3. HEALING (80)
+4. HUNTING (75)
+5. GATHERING/MINING (70/65)
+6. BUILDING (60)
+7. CRAFTING (50)
+8. FOLLOWING (40)
+9. MOVING/EXPLORING (30/25)
+10. CHATTING (10)
+11. IDLE (0)
+
+### Configuration
+
+The configuration file is `config/player-bot.json`.
+
+Sample options (see Spanish section for full example):
+
+```json
+{
+  "enableBots": true,
+  "maxBotsPerPlayer": 5,
+  "maxTotalBots": 20,
+  "botsCanChat": true,
+  "chatCooldownMs": 2000,
+  "botSightRange": 32.0,
+  "botsAutoDefend": true,
+  "fleeHealthThreshold": 0.3,
+  "botsCallForHelp": true,
+  "botsAttackOnlyMonsters": true,
+  "botsAttackPlayers": false,
+  "botsAttackAlliedBots": false,
+  "defaultCombatMode": "defensive",
+  "enableSpawnProtection": true,
+  "spawnProtectionRadius": 32,
+  "enablePlayerAreaProtection": true,
+  "playerProtectionRadius": 16,
+  "respectBuildProtection": true,
+  "respectSignProtection": true,
+  "botsAutoGather": true,
+  "botsAutoCraft": true,
+  "botsAutoBuild": false
+}
+```
+
+Security options like `botsAttackOnlyMonsters`, `botsAttackPlayers` and `respectBuildProtection` ensure bots behave safely on multiplayer servers.
+
+### Client hotkeys
+
+- **B** - Quickly create a bot
+- **N** - List active bots
+
+### Usage examples
+
+Create a team of bots
+
+```bash
+# Create 3 bots
+/bot create Warrior
+/bot create Builder
+/bot create Miner
+
+# Group them as allies
+/bot group Warrior Builder
+/bot group Warrior Miner
+
+# Make them follow you
+/bot follow Warrior @p
+/bot follow Builder @p
+/bot follow Miner @p
+```
+
+Build a base
+
+```bash
+# Create a builder bot
+/bot create Architect
+
+# Give it materials (place items in its inventory or let it gather)
+
+# Make it build a house
+/bot build Architect house
+```
+
+Automatic defense: bots automatically defend themselves, nearby allies that ask for help, and players in their group.
+
+### Development
+
+Project structure and build instructions are provided in the Spanish section below. Main commands to compile:
+
+```bash
+# Windows
+gradlew.bat build
+
+# Linux/Mac
+./gradlew build
+```
+
+The resulting `.jar` will be in `build/libs/`.
+
+### License
+
+MIT License - see LICENSE file for details.
+
+### Credits
+
+- Built with [Fabric](https://fabricmc.net/)
+- Inspired by mods like Baritone and other Minecraft bots
+
+---
+
+<!-- ORIGINAL SPANISH SECTION -->
+
+# Player BOT - AI Controlled Players for Minecraft
+
+Un mod de Fabric para Minecraft 1.21.1 que permite crear jugadores controlados por IA con capacidades avanzadas:
+
+- 🚶 **Movimiento inteligente** con pathfinding
+- ⚔️ **Combate** contra mobs hostiles
+- 🛡️ **Defensa** con escudos y esquives
+- 🏗️ **Construcción** de estructuras (casas, torres, puentes, etc.)
+- 🔨 **Crafteo** automático de herramientas y items
+- ⛏️ **Minería** y recolección de recursos
+- 💬 **Chat** con jugadores humanos y otros bots
+- 🤝 **Cooperación** entre bots (grupos, ayuda mutua)
+- 👥 **Seguimiento** de jugadores
+- 🐄 **Caza** de animales (vacas, cerdos, ovejas, gallinas, conejos) cuando tiene hambre
+- 🎒 **Empiezan con inventario vacío**: talan madera, minan piedra, craftean herramientas y se equipan solos
+
 ## Instalación
 
 1. Descarga el archivo `.jar` de la carpeta `build/libs/`
