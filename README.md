@@ -1,21 +1,3 @@
-# Player BOT - AI Controlled Players for Minecraft
-
-Un mod de Fabric para Minecraft 1.21.1 que permite crear jugadores controlados por IA con capacidades avanzadas:
-
-- 🚶 **Movimiento inteligente** con pathfinding
-- ⚔️ **Combate** contra mobs hostiles
-- 🛡️ **Defensa** con escudos y esquives
-- 🏗️ **Construcción** de estructuras (casas, torres, puentes, etc.)
-- 🔨 **Crafteo** automático de herramientas y items
-- ⛏️ **Minería** y recolección de recursos
-- 💬 **Chat** con jugadores humanos y otros bots
-- 🤝 **Cooperación** entre bots (grupos, ayuda mutua)
-- 👥 **Seguimiento** de jugadores
-- 🐄 **Caza** de animales (vacas, cerdos, ovejas, gallinas, conejos) cuando tiene hambre
-- 🎒 **Empiezan con inventario vacío**: talan madera, minan piedra, craftean herramientas y se equipan solos
-
----
-
 <!-- ENGLISH SECTION -->
 
 ## English
